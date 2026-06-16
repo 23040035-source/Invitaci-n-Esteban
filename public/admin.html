@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Panel Administrativo | Esteban Espitia Valero
+</title>
+
+<meta
+    name="description"
+    content="Panel administrativo de confirmaciones"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+<link
+    rel="stylesheet"
+    href="css/admin.css"
+>
+```
+
+</head>
+<body>
+
+```
+<!-- ===================================== -->
+<!-- LOGIN -->
+<!-- ===================================== -->
+
+<section
+    id="loginSection"
+    class="login-section"
+>
+
+    <div class="login-card">
+
+        <div class="logo-circle">
+            🤠
+        </div>
+
+        <h1>
+            Panel Administrativo
+        </h1>
+
+        <p>
+            Cumpleaños de
+            <strong>
+                Esteban Espitia Valero
+            </strong>
+        </p>
+
+        <form id="loginForm">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Contraseña"
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit">
+                Ingresar
+            </button>
+
+        </form>
+
+        <div id="loginMessage"></div>
+
+    </div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- DASHBOARD -->
+<!-- ===================================== -->
+
+<main
+    id="dashboard"
+    class="hidden"
+>
+
+    <!-- HEADER -->
+
+    <header class="admin-header">
+
+        <div>
+
+            <h1>
+                Panel Administrativo
+            </h1>
+
+            <p>
+                Invitación Digital Premium
+            </p>
+
+        </div>
+
+        <button
+            id="logoutBtn"
+            class="logout-btn"
+        >
+            Cerrar Sesión
+        </button>
+
+    </header>
+
+    <!-- ===================================== -->
+    <!-- ESTADÍSTICAS -->
+    <!-- ===================================== -->
+
+    <section class="stats-section">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <h3>
+                    Confirmaciones
+                </h3>
+
+                <span
+                    id="totalRegistros"
+                    class="stat-number"
+                >
+                    0
+                </span>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>
+                    Personas Confirmadas
+                </h3>
+
+                <span
+                    id="totalPersonas"
+                    class="stat-number"
+                >
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- HERRAMIENTAS -->
+    <!-- ===================================== -->
+
+    <section class="tools-section">
+
+        <div class="tools-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Buscar asistente..."
+            >
+
+            <select id="sortSelect">
+
+                <option value="newest">
+                    Más recientes
+                </option>
+
+                <option value="oldest">
+                    Más antiguos
+                </option>
+
+                <option value="nameAsc">
+                    Nombre A-Z
+                </option>
+
+                <option value="nameDesc">
+                    Nombre Z-A
+                </option>
+
+                <option value="guests">
+                    Más asistentes
+                </option>
+
+            </select>
+
+            <button
+                id="refreshBtn"
+                class="action-btn"
+            >
+                Actualizar
+            </button>
+
+            <button
+                id="exportBtn"
+                class="action-btn"
+            >
+                Exportar CSV
+            </button>
+
+            <button
+                id="printBtn"
+                class="action-btn"
+            >
+                Imprimir
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- TABLA -->
+    <!-- ===================================== -->
+
+    <section class="table-section">
+
+        <div class="table-wrapper">
+
+            <table id="attendeesTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Número
+                        </th>
+
+                        <th>
+                            Nombre
+                        </th>
+
+                        <th>
+                            Asistentes
+                        </th>
+
+                        <th>
+                            Fecha y Hora
+                        </th>
+
+                        <th>
+                            Acción
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tableBody">
+
+                    <!-- JS -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- FOOTER -->
+    <!-- ===================================== -->
+
+    <footer class="admin-footer">
+
+        <p>
+            Esteban Espitia Valero
+        </p>
+
+        <small>
+            Cumpleaños #3 · Panel Administrativo
+        </small>
+
+    </footer>
+
+</main>
+
+<!-- ===================================== -->
+<!-- MODAL ELIMINAR -->
+<!-- ===================================== -->
+
+<div
+    id="deleteModal"
+    class="modal hidden"
+>
+
+    <div class="modal-content">
+
+        <h2>
+            Eliminar Registro
+        </h2>
+
+        <p>
+            ¿Deseas eliminar este registro?
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                id="confirmDelete"
+                class="danger-btn"
+            >
+                Eliminar
+            </button>
+
+            <button
+                id="cancelDelete"
+                class="secondary-btn"
+            >
+                Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/admin.js"></script>
+```
+
+</body>
+</html>

@@ -1,0 +1,677 @@
+/* ======================================================
+   PANEL ADMINISTRATIVO
+   ESTEBAN ESPITIA VALERO
+   Tema: Granja Elegante Premium
+====================================================== */
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --beige:#f7f1e8;
+    --arena:#e8d9c0;
+    --cafe:#6f4e37;
+    --cafe-dark:#4b3621;
+    --blanco:#ffffff;
+    --dorado:#b08d57;
+    --gris:#f5f5f5;
+    --rojo:#c0392b;
+    --verde:#2e8b57;
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,.12);
+
+    --radius:18px;
+
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Montserrat',sans-serif;
+
+    background:
+    linear-gradient(
+        rgba(247,241,232,.95),
+        rgba(247,241,232,.95)
+    ),
+    url('../images/wood-bg.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    min-height:100vh;
+
+    color:var(--cafe-dark);
+
+}
+
+/* ==========================
+   UTILIDADES
+========================== */
+
+.hidden{
+    display:none !important;
+}
+
+.container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+input,
+select{
+
+    width:100%;
+    padding:14px 16px;
+
+    border:1px solid #ddd;
+    border-radius:12px;
+
+    font-size:.95rem;
+    outline:none;
+
+    background:white;
+}
+
+/* ==========================
+   LOGIN
+========================== */
+
+.login-section{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.login-card{
+
+    width:100%;
+    max-width:480px;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(8px);
+
+    border-radius:25px;
+
+    padding:45px;
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+    animation:fadeIn .8s ease;
+
+}
+
+.logo-circle{
+
+    width:90px;
+    height:90px;
+
+    margin:auto auto 25px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        var(--dorado),
+        #d9bc84
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:2rem;
+
+    color:white;
+
+}
+
+.login-card h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.login-card p{
+
+    margin-bottom:30px;
+
+    color:#666;
+
+}
+
+#loginForm{
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+}
+
+#loginForm button{
+
+    background:var(--cafe);
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+#loginForm button:hover{
+
+    background:var(--cafe-dark);
+
+}
+
+#loginMessage{
+
+    margin-top:18px;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.admin-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    padding:25px 35px;
+
+    background:white;
+
+    box-shadow:var(--shadow);
+
+}
+
+.admin-header h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:2rem;
+
+    margin-bottom:5px;
+
+}
+
+.admin-header p{
+
+    color:#666;
+
+}
+
+.logout-btn{
+
+    background:var(--rojo);
+
+    color:white;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   ESTADÍSTICAS
+========================== */
+
+.stats-section{
+
+    padding:30px;
+
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+}
+
+.stat-card h3{
+
+    margin-bottom:15px;
+
+    color:#666;
+
+}
+
+.stat-number{
+
+    display:block;
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    color:var(--cafe);
+
+}
+
+/* ==========================
+   HERRAMIENTAS
+========================== */
+
+.tools-section{
+
+    padding:0 30px 30px;
+
+}
+
+.tools-container{
+
+    background:white;
+
+    border-radius:var(--radius);
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+    display:grid;
+
+    grid-template-columns:
+    2fr
+    1fr
+    auto
+    auto
+    auto;
+
+    gap:15px;
+
+    align-items:center;
+
+}
+
+.action-btn{
+
+    background:var(--cafe);
+
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+.action-btn:hover{
+
+    background:var(--cafe-dark);
+
+}
+
+/* ==========================
+   TABLA
+========================== */
+
+.table-section{
+
+    padding:0 30px 40px;
+
+}
+
+.table-wrapper{
+
+    background:white;
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:var(--cafe);
+
+    color:white;
+
+}
+
+thead th{
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:.95rem;
+
+}
+
+tbody tr{
+
+    border-bottom:1px solid #eee;
+
+    transition:.2s;
+
+}
+
+tbody tr:hover{
+
+    background:#faf7f2;
+
+}
+
+tbody td{
+
+    padding:16px 18px;
+
+    font-size:.95rem;
+
+}
+
+.delete-btn{
+
+    background:var(--rojo);
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    font-size:.85rem;
+
+}
+
+.delete-btn:hover{
+
+    opacity:.9;
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.admin-footer{
+
+    text-align:center;
+
+    padding:35px;
+
+    color:#666;
+
+}
+
+.admin-footer p{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+/* ==========================
+   MODAL
+========================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+
+    padding:20px;
+
+}
+
+.modal-content{
+
+    background:white;
+
+    width:100%;
+    max-width:420px;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+.modal-content h2{
+
+    margin-bottom:15px;
+
+    font-family:'Playfair Display',serif;
+
+}
+
+.modal-content p{
+
+    margin-bottom:25px;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+}
+
+.danger-btn{
+
+    background:var(--rojo);
+
+    color:white;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+}
+
+.secondary-btn{
+
+    background:#ddd;
+
+    color:#333;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+}
+
+/* ==========================
+   SCROLL TABLA
+========================== */
+
+.table-wrapper{
+
+    overflow-x:auto;
+
+}
+
+/* ==========================
+   ANIMACIONES
+========================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media(max-width:1000px){
+
+    .tools-container{
+
+        grid-template-columns:
+        1fr
+        1fr;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+    .admin-header{
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .stats-section,
+    .tools-section,
+    .table-section{
+
+        padding-left:15px;
+        padding-right:15px;
+
+    }
+
+    .tools-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stat-number{
+
+        font-size:2.4rem;
+
+    }
+
+    table{
+
+        min-width:700px;
+
+    }
+
+}
+
+/* ==========================
+   WHATSAPP WEBVIEW
+========================== */
+
+button,
+a,
+input,
+select{
+
+    -webkit-tap-highlight-color:
+    transparent;
+
+}
